@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"broken","Mon Nov 25 15:31:59 SAST 2024","Mon Nov 25 15:31:59 SAST 2024","2","Parallel Browser Suite","Edge Test","testrunner.TestRunner","testrunner.TestRunner","setUpClass","setUpClass",""
+"broken","Mon Nov 25 15:35:18 SAST 2024","Mon Nov 25 15:35:34 SAST 2024","16097","","Regression Master","","User Registration","","User Registration","  As a user
+  I want to perform Regression on the application"
+"broken","Mon Nov 25 15:31:59 SAST 2024","Mon Nov 25 15:31:59 SAST 2024","2","Parallel Browser Suite","Chrome Test","testrunner.TestRunner","testrunner.TestRunner","setUpClass","setUpClass",""
