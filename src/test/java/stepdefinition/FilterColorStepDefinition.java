@@ -5,28 +5,32 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import pageobject.FilterColorPage;
+import testrunner.TestRunner;
 import utility.DriverFactory;
 
 public class FilterColorStepDefinition {
 
     private FilterColorPage filterColorPage;
-    private DriverFactory driverFactory;
+//    private DriverFactory driverFactory;
+    private TestRunner testRunner;
     private WebDriver driver;
 
 
     public FilterColorStepDefinition() {
 
-        filterColorPage = new FilterColorPage(DriverFactory.getDriver());
-        driverFactory = new DriverFactory();
+        filterColorPage = new FilterColorPage(TestRunner.getDriver());
+//        driverFactory = new DriverFactory();
+        driver = TestRunner.getDriver();
+        filterColorPage = new FilterColorPage(driver);
     }
 
     @Given("I am on the dress web page")
     public void i_am_on_the_dress_web_page() {
 
-        driver = driverFactory.init_driver();
-        filterColorPage = new FilterColorPage(driver);
+//        driver = DriverFactory.getDriver();
+//        filterColorPage = new FilterColorPage(driver);
 
-        driver.get(DriverFactory.getUrl("filterColor.url"));
+        driver.get(TestRunner.getUrl("filterColor.url"));
     }
 
     @When("I click the White color checkbox")

@@ -5,28 +5,32 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import pageobject.PlaceOrderSuccessfullyPage;
+import testrunner.TestRunner;
 import utility.DriverFactory;
 
 public class PlaceOrderSuccessfullyStepDef {
 
     private PlaceOrderSuccessfullyPage placeOrderSuccessfullyPage;
-    private DriverFactory driverFactory;
+//    private DriverFactory driverFactory;
+    private TestRunner testRunner;
     private WebDriver driver;
 
 
     public PlaceOrderSuccessfullyStepDef() {
 
-        placeOrderSuccessfullyPage = new PlaceOrderSuccessfullyPage(DriverFactory.getDriver());
-        driverFactory = new DriverFactory();
+        placeOrderSuccessfullyPage = new PlaceOrderSuccessfullyPage(TestRunner.getDriver());
+//        driverFactory = new DriverFactory();
+        testRunner = new TestRunner();
+            driver = TestRunner.getDriver();
+        placeOrderSuccessfullyPage = new PlaceOrderSuccessfullyPage(driver);
     }
 
     @Given("I am on the Cash out page")
     public void i_am_on_the_cash_out_page() {
 
-        driver = driverFactory.init_driver();
-        placeOrderSuccessfullyPage = new PlaceOrderSuccessfullyPage(driver);
 
-        driver.get(DriverFactory.getUrl("cashOut.url"));
+
+        driver.get(TestRunner.getUrl("cashOut.url"));
     }
 
 

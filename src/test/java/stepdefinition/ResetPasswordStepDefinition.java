@@ -3,6 +3,7 @@ package stepdefinition;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageobject.ResetPasswordPage;
+import testrunner.TestRunner;
 import utility.DriverFactory;
 
 public class ResetPasswordStepDefinition {
@@ -10,10 +11,11 @@ public class ResetPasswordStepDefinition {
 
 
     private ResetPasswordPage resetPasswordPage;
+    private TestRunner testRunner;
 
     public ResetPasswordStepDefinition() {
-
-        resetPasswordPage = new ResetPasswordPage(DriverFactory.getDriver());
+        testRunner = new TestRunner();
+        resetPasswordPage = new ResetPasswordPage(TestRunner.getDriver());
     }
 
     @When("I click the forgot password hyperlink")

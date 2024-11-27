@@ -5,6 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import pageobject.LoginPage;
+import testrunner.TestRunner;
 import utility.DriverFactory;
 import utility.ExcelReader;
 
@@ -12,7 +13,8 @@ import java.io.IOException;
 
 public class LoginStepDefinition {
 
-    private DriverFactory driverFactory;
+//    private DriverFactory driverFactory;
+    private TestRunner testRunner;
     private ExcelReader excelReader;
     private LoginPage loginPage;
     private WebDriver driver;
@@ -21,17 +23,20 @@ public class LoginStepDefinition {
     public static String browser;
 
     public LoginStepDefinition() {
-        driverFactory = new DriverFactory();
+//        driverFactory = new DriverFactory();
+        testRunner = new TestRunner();
         excelReader = new ExcelReader();
+        driver = TestRunner.getDriver();
+        loginPage = new LoginPage(driver);
     }
 
     @Given("I am on the Web Application page")
     public void i_am_on_the_web_application_page() {
-        // Initialize the driver with the browser from the static variable
-        driver = driverFactory.init_driver();
-        loginPage = new LoginPage(driver);
+
         // Navigate to the URL from config.properties
-        driver.get(DriverFactory.getUrl("login.url"));
+//        driver.get(DriverFactory.getUrl("login.url"));
+        String loginUrl = TestRunner.getUrl("login.url");
+        driver.get(loginUrl);
     }
 
     @When("I click on the Sign in text")

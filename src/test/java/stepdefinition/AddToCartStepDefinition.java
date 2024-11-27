@@ -5,28 +5,29 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import pageobject.AddToCartPage;
+import testrunner.TestRunner;
 import utility.DriverFactory;
 
 public class AddToCartStepDefinition {
 
     private AddToCartPage addToCartPage;
-    private DriverFactory driverFactory;
+//    private DriverFactory driverFactory;
+    private TestRunner testRunner;
     private WebDriver driver;
 
 
     public AddToCartStepDefinition() {
 
         addToCartPage = new AddToCartPage(driver);
-        driverFactory = new DriverFactory();
+//        driverFactory = new DriverFactory();
+        driver = TestRunner.getDriver();
+        addToCartPage = new AddToCartPage(driver);
     }
 
     @Given("I am on the Dress color page")
     public void i_am_on_the_dress_color_page() {
 
-        driver = driverFactory.init_driver();
-        addToCartPage = new AddToCartPage(driver);
-
-        driver.get(DriverFactory.getUrl("addToCart.url"));
+        driver.get(TestRunner.getUrl("addToCart.url"));
     }
     @When("I click the White color")
     public void i_click_the_white_color() throws InterruptedException {

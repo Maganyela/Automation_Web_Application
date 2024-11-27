@@ -3,15 +3,17 @@ package stepdefinition;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageobject.RegisterPage;
+import testrunner.TestRunner;
 import utility.DriverFactory;
 
 public class RegisterStepDefinition {
 
     private RegisterPage registerPage;
+    private TestRunner testRunner;
 
     public RegisterStepDefinition() {
-
-        registerPage = new RegisterPage(DriverFactory.getDriver());
+        testRunner = new TestRunner();
+        registerPage = new RegisterPage(TestRunner.getDriver());
     }
 
     @When("I enter email")
